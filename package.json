@@ -1,5 +1,6 @@
 {
     "name": "my-project",
+    "homepage": "https://joaohenriqueleal.github.io/todo-app",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -15,8 +16,11 @@
     "dependencies": {
         "@tailwindcss/vite": "^4.1.16",
         "@vitejs/plugin-react": "^5.1.0",
+        "lucide-react": "^0.553.0",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
+        "react-icons": "^5.5.0",
+        "react-router-dom": "^7.9.5",
         "tailwindcss": "^4.1.16"
     }
 }

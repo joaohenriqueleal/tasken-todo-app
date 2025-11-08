@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+
+@layer utilities {
+    @keyframes from-left {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0%);
+            opacity: 1;
+        }
+    }
+
+    .anim-from-left {
+        animation: from-left 1s ease-in-out;
+    }
+}
