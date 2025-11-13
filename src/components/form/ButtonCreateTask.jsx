@@ -10,7 +10,7 @@ import Legend from '../ui/Legend'
 import Button from './Button'
 
 
-export default function ButtonCreateTask() {
+export default function ButtonCreateTask({ tasks, setTasks }) {
     const [showMessageII, setShowMessageII] = useState(false)
     const [showMessageTAE, setShowMessageTAE] = useState(false)
     const [showMessageTA, setShowMessageTA] = useState(false)
@@ -18,13 +18,11 @@ export default function ButtonCreateTask() {
     const [shoWindowTN, setShoWindowTN] = useState(false)
 
     const [actualUser, setActualUser] = useState('')
-    const [tasks, setTasks] = useState([])
 
     useEffect(() => {
         const user = loasActualUser()
         if (user) {
             setActualUser(user)
-            setTasks(loadTasks(user))
         }
     }, [])
 

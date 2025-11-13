@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+
+@layer {
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(1440deg);  }
+    }
+
+    .anim-spin {
+        animation: spin .7s ease-in-out;
+    }
+}

@@ -17,7 +17,7 @@ export default function WindowSingleInput({ setShow, title, type, id, placeholde
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center
-                bg-black/50 backdrop-blur-[2px] p-4"
+                bg-black/50 backdrop-blur-[2px] p-4 text-white"
         >
             <div
                 className='flex flex-col w-full shadow-xl anim-from-left

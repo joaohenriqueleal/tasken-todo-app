@@ -43,14 +43,14 @@ export default function MessageError({ setShow, message }) {
             }`}
         >
             <div
-                className="bg-brand text-white rounded-lg shadow-lg px-4 py-3
+                className="bg-sky-900 text-white rounded-lg shadow-lg px-4 py-3
                     w-80 relative overflow-hidden flex items-center"
             >
                 <p className="text-sm pr-6 flex-1 font-bold">{message}</p>
                 <button
                     onClick={handleClose}
                     className="flex items-center justify-center text-white
-                        hover:text-gray-200 cursor-pointer hover:bg-sky-300
+                        hover:text-gray-200 cursor-pointer hover:bg-sky-700
                         rounded-full p-1"
                 >
                     <X size={18} />

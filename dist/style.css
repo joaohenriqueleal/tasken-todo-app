@@ -2,6 +2,7 @@
 @import 'tailwindcss';
 
 @import '../src/styles/animations/anim-from-left.css';
+@import '../src/styles/animations/anim-spin.css';
 
 @theme {
     --color-brand: #00b5ff;
