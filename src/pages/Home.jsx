@@ -48,7 +48,10 @@ export default function Home() {
                 ref={mainRef}
             >
                 <Header tasks={tasks} setTasks={setTasks} />
-                <section className="flex-1 w-full flex flex-col p-4 gap-4 overflow-y-auto">
+                <section
+                    className="flex-1 w-full flex flex-col p-4 gap-4
+                        overflow-y-auto lg:w-255 lg:mx-auto"
+                >
                     <UserLevel scores={scores} />
                     <Tasks
                         tasks={tasks}

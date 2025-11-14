@@ -10,7 +10,8 @@ import Legend from '../ui/Legend'
 import Button from './Button'
 
 
-export default function ButtonCreateTask({ tasks, setTasks }) {
+export default function ButtonCreateTask({ tasks, setTasks, isTasksPage }) {
+    const [showMessageIP, setShowMessageIP] = useState(false)
     const [showMessageII, setShowMessageII] = useState(false)
     const [showMessageTAE, setShowMessageTAE] = useState(false)
     const [showMessageTA, setShowMessageTA] = useState(false)
@@ -52,11 +53,13 @@ export default function ButtonCreateTask({ tasks, setTasks }) {
         <>
             <div className='flex flex-col items-center justify-center'>
                 <Button
-                    extraStyles='bg-sky-700 w-16 h-16 rounded-full shadow-2xl
-                        font-bold transform -translate-y-5 flex items-center
-                        justify-center text-3xl cursor-pointer hover:bg-sky-500
-                        transition duration-300'
-                    handleClick={() => setShoWindowTN(true)}
+                    extraStyles={`${isTasksPage ? 'bg-sky-700 hover:bg-sky-500' :
+                        'bg-gray-600'} w-16 h-16 rounded-full transition duration-300
+                        shadow-2xl font-bold transform -translate-y-5 flex
+                        items-center justify-center text-3xl cursor-pointer`}
+                    handleClick={isTasksPage ? () => setShoWindowTN(true) : 
+                        () => setShowMessageIP(true)
+                    }
                     text='+'
                 />
                 <Legend
@@ -91,6 +94,12 @@ export default function ButtonCreateTask({ tasks, setTasks }) {
                 <MessageError
                     message='Nova tarefa adicionada com sucesso!'
                     setShow={setShowMessageTA}
+                />
+            )}
+            {showMessageIP && (
+                <MessageError
+                    message='Você só pode criar tarefas na página de Tarefas'
+                    setShow={setShowMessageIP}
                 />
             )}
         </>

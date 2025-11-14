@@ -23,7 +23,7 @@ export default function Tasks({ tasks, setTasks, scores, setScores }) {
     return (
         <div
             className="h-full bg-linear-to-r from-sky-50 to-sky-100 rounded-xl
-                p-4 flex flex-col gap-8"
+                p-4 flex flex-col gap-8 anim-from-left"
         >
             <div className="flex justify-between">
                 <Title

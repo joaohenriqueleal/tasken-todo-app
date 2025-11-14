@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+
+@utility nav-link-mobile {
+    @apply text-black flex flex-col items-center gap-1;
+}

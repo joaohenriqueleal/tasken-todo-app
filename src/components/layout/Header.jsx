@@ -44,7 +44,9 @@ export default function Header({ tasks, setTasks }) {
         <header
             className="bg-linear-to-r from-sky-600 to-sky-500 p-4 shadow-lg"
         >
-            <div className="flex flex-col gap-5">
+            <div
+                className="flex flex-col gap-5 lg:w-250 mx-auto anim-from-left"
+            >
                 <div className="flex items-center justify-between">
                     <Title
                         text={actualUser ? `Olá, ${actualUser}!` : "Carregando..."}

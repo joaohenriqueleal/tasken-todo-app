@@ -18,7 +18,7 @@ export default function DailyTasksProgressBar({ tasks }) {
     }
 
     return (
-        <div className="flex flex-col gap-2 w-full max-w-md mx-auto anim-from-left">
+        <div className="flex flex-col gap-2 w-full max-w-md anim-from-left">
             <div className="w-full bg-white/30 h-4 rounded-full overflow-hidden">
                 <div
                     className="bg-yellow-400 h-full rounded-full transition-all

@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { useState } from 'react';
 
+import Configurations from '../pages/Configurations'
 import Register from '../pages/Register';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
@@ -40,6 +41,14 @@ export default function App() {
                         ) : (
                             <Register setAuth={setAuthenticated} />
                         )
+                    }
+                />
+                <Route
+                    path="/configuracoes"
+                    element={
+                        authenticated ? 
+                            <Configurations setAuth={setAuthenticated} /> :
+                            <Navigate to="/login" />
                     }
                 />
             </Routes>
