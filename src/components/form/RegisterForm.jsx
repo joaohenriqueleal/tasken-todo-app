@@ -12,8 +12,9 @@ import Input from './Input';
 import Form from './Form';
 
 export default function RegisterForm({ setAuth }) {
-    const [showMessageUF, setShowMessageUF] = useState(false);
-    const [showMessageII, setShowMessageII] = useState(false);
+    const [showMessageIPL, setShowMessageIPL] = useState(false)
+    const [showMessageUF, setShowMessageUF] = useState(false)
+    const [showMessageII, setShowMessageII] = useState(false)
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -28,7 +29,12 @@ export default function RegisterForm({ setAuth }) {
 
         if (!username || !password) {
             setShowMessageII(true);
-            return;
+            return
+        }
+
+        if (password.length != 8) {
+            setShowMessageIPL(true)
+            return
         }
 
         const existsUser = users.find(u => u.username == username)
@@ -98,6 +104,12 @@ export default function RegisterForm({ setAuth }) {
                 <MessageError
                     message="Usuário já cadastrado!"
                     setShow={setShowMessageUF}
+                />
+            )}
+            {showMessageIPL && (
+                <MessageError
+                    message="Senha deve ter 8 carácteres!"
+                    setShow={setShowMessageIPL}
                 />
             )}
         </Form>

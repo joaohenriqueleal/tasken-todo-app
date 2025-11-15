@@ -10,7 +10,9 @@ export default function WindowSingleInput({ setShow, title, type, id, placeholde
         label, action }) {
     const [data, setData] = useState('')
 
-    const runAction = () => {
+    const runAction = (e) => {
+        e.preventDefault()
+        
         action(data)
     }
     
