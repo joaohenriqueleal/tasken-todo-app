@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { FaTasks, FaCog } from 'react-icons/fa'
+import { FaTasks, FaCog, FaFolder, FaChartBar } from 'react-icons/fa'
 
 import ButtonCreateTask from '../form/ButtonCreateTask'
 import Legend from '../ui/Legend'
@@ -11,6 +11,8 @@ export default function NavBar({ tasks, setTasks }) {
 
     const isTarefas = path === '/' || path.endsWith('/todo-app') || path.endsWith('/todo-app/')
     const isConfig = path.includes('configuracoes')
+    const isProjects = path.includes('projetos')
+    const isEvolution = path.includes('evolucao')
 
     return (
         <nav
@@ -25,7 +27,25 @@ export default function NavBar({ tasks, setTasks }) {
                 <FaTasks size={32} />
                 <Legend extraStyles="text-sm font-bold" text="Tarefas" />
             </Link>
-            <ButtonCreateTask tasks={tasks} setTasks={setTasks} isTasksPage={isTarefas} />
+            <Link
+                className={`nav-link-mobile ${isEvolution ? 'text-gray-500' : ''}`}
+                to="/evolucao"
+            >
+                <FaChartBar size={32} />
+                <Legend extraStyles="text-sm font-bold" text="Evolução" />
+            </Link>
+            <ButtonCreateTask
+                tasks={tasks}
+                setTasks={setTasks}
+                isTasksPage={isTarefas}
+            />
+            <Link
+                className={`nav-link-mobile ${isProjects ? 'text-gray-500' : ''}`}
+                to="/projetos"
+            >
+                <FaFolder size={32} />
+                <Legend extraStyles="text-sm font-bold" text="Projetos" />
+            </Link>
             <Link
                 className={`nav-link-mobile ${isConfig ? 'text-gray-500' : ''}`}
                 to="/configuracoes"

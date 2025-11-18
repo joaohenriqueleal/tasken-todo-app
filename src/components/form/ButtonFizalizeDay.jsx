@@ -6,15 +6,21 @@ import Button from '../form/Button'
 import loadActualUser from '../../shared/actual-user/loadActualUser'
 import saveScores from '../../shared/scores/saveScores'
 import saveTasks from '../../shared/tasks/saveTasks'
+import loadDays from '../../shared/days/loadDays'
+import saveDays from '../../shared/days/saveDays'
 
 
 export default function ButtonFizalizeDay({ setTasks, tasks, scores, setScores }) {
     const [showMessageNTHC, setShowMessageNTHC] = useState(false)
     const [actualUser, setActualUser] = useState(null)
+    const [days, setDays] = useState([])
         
     useEffect(() => {
         const user = loadActualUser()
-        if (user) setActualUser(user)
+        if (user) {
+            setActualUser(user)
+            setDays(loadDays(user))
+        }
     }, [])
     
     const getTotalCompletedTasks = () => {
@@ -38,6 +44,13 @@ export default function ButtonFizalizeDay({ setTasks, tasks, scores, setScores }
         saveScores(actualUser, scores + totalCompleted)
         setScores(scores + totalCompleted)
         saveTasks(actualUser, [])
+
+        const newDaysList = [...days, {
+            scores: totalCompleted,
+            time: Date.now()
+        }]
+        saveDays(actualUser, newDaysList)
+        setDays(newDaysList)
         setTasks([])
     }
 

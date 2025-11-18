@@ -47,7 +47,7 @@ export default function UserLevel({ scores }) {
                     {50 - (scores % 50)} exp até o próximo nível
                 </p>
                 <p className="text-gray-500 text-xs font-semibold">
-                    {scores} pontos totais
+                    {scores} exp totais
                 </p>
             </div>
 

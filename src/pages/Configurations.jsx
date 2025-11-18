@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import { FaSignOutAlt, FaTrash } from 'react-icons/fa'
+import { FaSignOutAlt, FaTrash, FaPen } from 'react-icons/fa'
 
 import loadActualUser from "../shared/actual-user/loadActualUser"
 import saveActualUser from '../shared/actual-user/saveActualUser'
@@ -10,12 +10,13 @@ import loadUsers from '../shared/users/loadUsers'
 import loadTasks from "../shared/tasks/loadTasks"
 import saveTasks from "../shared/tasks/saveTasks"
 import saveUsers from '../shared/users/saveUsers'
+import loadDays from "../shared/days/loadDays"
+import saveDays from '../shared/days/saveDays'
 
 import HeaderConfigurations from "../components/layout/HeaderConfigurations"
 import WindowSingleInput from "../components/windows/WindowSingleInput"
 import MessageError from "../components/windows/MessageError"
 import NavBar from "../components/layout/NavBar"
-import Button from "../components/form/Button"
 
 
 export default function Configurations({ setAuth }) {
@@ -30,6 +31,7 @@ export default function Configurations({ setAuth }) {
     const [userPassword, setUserPassword] = useState('')
     const [actualUser, setActualUser] = useState(null)
     const [scores, setScores] = useState(0)
+    const [days, setDays] = useState([])
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -38,6 +40,7 @@ export default function Configurations({ setAuth }) {
             setScores(loadScores(user))
             setUsers(loadUsers())
             setActualUser(user)
+            setDays(loadDays(user))
         }
     }, [])
 
@@ -84,6 +87,9 @@ export default function Configurations({ setAuth }) {
         saveScores(newProfileName, scores)
         localStorage.removeItem(`${actualUser}:scores`)
 
+        saveDays(newProfileName, days)
+        localStorage.removeItem(`${actualUser}:days`)
+
         saveActualUser(name)
         saveUsers(updatedUsers)
         setActualUser(name)
@@ -103,6 +109,7 @@ export default function Configurations({ setAuth }) {
     
             localStorage.removeItem(`${actualUser}:tasks`)
             localStorage.removeItem(`${actualUser}:scores`)
+            localStorage.removeItem(`${actualUser}:days`)
 
             setUsers(newUsersList)
             saveUsers(newUsersList)
@@ -131,12 +138,15 @@ export default function Configurations({ setAuth }) {
                     <p className="w-1/2">
                         Pressione o botão ao lado pra editar o seu nome de perfil
                     </p>
-                    <Button
-                        extraStyles='bg-sky-400 p-4 w-30 rounded shadow hover:bg-sky-300
-                            cursor-pointer transition duration-300 rounded-2xl'
-                        handleClick={() => setShowWindowEP(true)}
-                        text='Editar'
-                    />
+                    <button
+                        className='bg-sky-400 p-4 w-30 shadow hover:bg-sky-300
+                            cursor-pointer transition duration-300 rounded-2xl flex
+                            items-center justify-center gap-2'
+                        onClick={() => setShowWindowEP(true)}
+                        text=''
+                    >
+                        <FaPen /> Editar
+                    </button>
                 </section>
                 <section
                     className="bg-linear-to-r from-sky-500 to-sky-600 p-4 rounded-xl
@@ -146,17 +156,18 @@ export default function Configurations({ setAuth }) {
                         Pressione o botão ao lado pra Sair da sua conta
                     </p>
                     <button
-                        className="p-4 bg-black/70 w-30 rounded-2xl shadow hover:bg-red-600
-                            cursor-pointer transition duration-300 text-red-500 flex
-                            items-center gap-2 justify-center hover:text-white"
+                        className="p-4 bg-sky-400 w-30 rounded-2xl shadow 
+                            cursor-pointer transition duration-300 flex
+                            hover:bg-sky-300 items-center gap-2 justify-center
+                            hover:text-white"
                         onClick={logOut}
                     >
                         <FaSignOutAlt /> Sair
                     </button>
                 </section>
                 <section
-                    className="bg-linear-to-r from-sky-500 to-sky-600 p-4 rounded-xl
-                        shadow-xl flex justify-between anim-from-left"
+                    className="bg-linear-to-r from-sky-700 to-sky-900 p-4 rounded-xl
+                        shadow-2xl flex justify-between anim-from-left"
                 >
                     <p className="w-1/2">
                         Pressione o botão ao lado pra deletar seu usuário

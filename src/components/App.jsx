@@ -7,7 +7,9 @@ import {
 import { useState } from 'react';
 
 import Configurations from '../pages/Configurations'
+import Evolution from '../pages/Evolution';
 import Register from '../pages/Register';
+import Projects from '../pages/Projects';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 
@@ -48,6 +50,22 @@ export default function App() {
                     element={
                         authenticated ? 
                             <Configurations setAuth={setAuthenticated} /> :
+                            <Navigate to="/login" />
+                    }
+                />
+                <Route
+                    path="/projetos"
+                    element={
+                        authenticated ? 
+                            <Projects /> :
+                            <Navigate to="/login" />
+                    }
+                />
+                <Route
+                    path="/evolucao"
+                    element={
+                        authenticated ? 
+                            <Evolution /> :
                             <Navigate to="/login" />
                     }
                 />

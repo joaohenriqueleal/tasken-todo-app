@@ -3,7 +3,7 @@ import Legend from '../components/ui/Legend'
 import Title from '../components/ui/Title'
 
 import TaskListImg from '../assets/task-list.jpeg'
-import LevelUp from '../assets/level-up.png'
+import LevelUp from '../assets/level-up.webp'
 import Logo from '../../public/logo.jpg'
 
 
@@ -46,7 +46,7 @@ export default function Register({ setAuth }) {
                 </h2>
                 <img
                     alt="Caderno com lista de tarefas"
-                    className="w-64 sm:w-80 rounded-2xl shadow-md"
+                    className="w-64 sm:w-80 rounded-2xl"
                     src={TaskListImg}
                 />
             </section>
@@ -60,7 +60,7 @@ export default function Register({ setAuth }) {
                 </h2>
                 <img
                     alt="Aumento de nível pessoal"
-                    className="w-64 sm:w-80 mt-4 rounded-2xl shadow-md"
+                    className="w-64 sm:w-80 mt-4 rounded-2xl"
                     src={LevelUp}
                 />
                 <Legend
